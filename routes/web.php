@@ -22,4 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::livewire('/post', 'post.index')
-->layout('layouts.app');
+	->layout('layouts.app')->name('post.index');
+
+Route::livewire('/post/create', 'post.create')
+	->layout('layouts.app')->name('post.create');

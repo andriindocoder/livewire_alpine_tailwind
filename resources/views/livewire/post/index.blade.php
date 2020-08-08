@@ -2,7 +2,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<button href="{{ route('post.create') }}" class="btn btn-success btn-md mb-3">Tambah</button>
+				@if(session()->has('success'))
+					<div class="alert alert-success">
+						{{ session('success') }}
+					</div>
+				@endif
+				<a href="{{ route('post.create') }}" class="btn btn-success btn-md mb-3">Tambah</a >
 				<table class="table">
 				  <thead class="thead-dark">
 				    <tr>
