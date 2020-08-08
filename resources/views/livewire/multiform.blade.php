@@ -9,6 +9,7 @@
 
     <form wire:submit.prevent="submit">
     	<div>
+    		@if($step == 0)
     		<div class="form-group">
     			<label for="name">Name</label>
     			<input type="text" class="form-control" wire:model.lazy="name" placeholder="Name">
@@ -16,7 +17,9 @@
 	    			<small class="form-text text-danger">{{ $message }}</small>
     			@enderror
     		</div>
+    		@endif
 
+			@if($step == 1)
     		<div class="form-group">
     			<label for="email">Email</label>
     			<input type="email" class="form-control" wire:model.lazy="email" placeholder="Email">
@@ -24,7 +27,9 @@
 	    			<small class="form-text text-danger">{{ $message }}</small>
     			@enderror
     		</div>
+    		@endif
 
+			@if($step == 2)
     		<div class="form-group">
     			<label for="color">Favorite Color</label>
     			<input type="text" class="form-control" wire:model.lazy="color" placeholder="Favorite Color">
@@ -32,6 +37,7 @@
 	    			<small class="form-text text-danger">{{ $message }}</small>
     			@enderror
     		</div>
+    		@endif
 
     		@if($step > 2)
 				<div class="card">
@@ -44,9 +50,13 @@
     		@endif
     	</div>
     	<div class="mt-2">
+    		@if($step > 0 && $step <= 2)
     		<button type="button" wire:click="decreaseStep" class="btn btn-secondary mr-3">Back</button>
-
+    		@endif
+			
+			@if($step <= 2)
     		<button type="submit" class="btn btn-success">Next</button>
+    		@endif
     	</div>
     </form>
 </div>
