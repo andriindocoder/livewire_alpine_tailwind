@@ -26,3 +26,6 @@ Route::livewire('/post', 'post.index')
 
 Route::livewire('/post/create', 'post.create')
 	->layout('layouts.app')->name('post.create');
+
+Route::livewire('/post/edit/{id}', 'post.edit')
+	->layout('layouts.app')->name('post.edit');

@@ -21,8 +21,9 @@
 				    <tr>
 				      <td>{{ $post->title }}</td>
 				      <td>{{ $post->content }}</td>
-				      <td>
-				      	
+				      <td class="text-center">
+				      	<a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary btn-sm">Edit</a>
+				      	<button wire:click="destroy({{ $post->id }})" class="btn btn-danger btn-sm">Delete</a>
 				      </td>
 				    </tr>
 				    @endforeach
