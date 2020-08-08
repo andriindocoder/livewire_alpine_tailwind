@@ -12,6 +12,17 @@ class Index extends Component
 
 	// public $posts;
 
+	public function destroy($id)
+	{
+		$post = Post::findOrFail($id);
+		if($post){
+			$post->delete();
+		}
+
+		session()->flash('success', 'Data berhasil dihapus');
+    	return redirect()->route('post.index');
+	}
+
     public function render()
     {
     	// $this->posts = Post::latest()->paginate(10);
