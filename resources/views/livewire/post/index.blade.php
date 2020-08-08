@@ -7,8 +7,9 @@
 						{{ session('success') }}
 					</div>
 				@endif
-				<a href="{{ route('post.create') }}" class="btn btn-success btn-md mb-3">Tambah</a >
-				<table class="table">
+				<a href="{{ route('post.create') }}" class="btn btn-success btn-md mb-3">Tambah</a>
+				<input class="form-control" type="text" wire:model="search" placeholder="Cari...">
+				<table class="table mt-3">
 				  <thead class="thead-dark">
 				    <tr>
 				      <th scope="col">Title</th>
@@ -29,6 +30,7 @@
 				    @endforeach
 				  </tbody>
 				</table>
+				{{ $posts->links() }}
 			</div>
 		</div>
 	</div>
