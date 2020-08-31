@@ -18,6 +18,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .completed {
+            text-decoration: line-through;
+        }
+    </style>
     <livewire:styles>
 </head>
 <body>

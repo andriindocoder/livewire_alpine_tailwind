@@ -14,17 +14,41 @@
 			@foreach($todos as $todo)
 				<li class="list-group-item d-flex justify-content-between align-items-center">
 					<div>
-						<input type="checkbox" class="mr-2">
-						<a href="#" class="">{{ $todo->title }}</a>
+						<input wire:change="toggleTodo({{ $todo->id }})" type="checkbox" class="mr-2" {{ $todo->completed ? 'checked' : '' }}>
+						<a 
+							href="#" 
+							class="{{ $todo->completed ? 'completed' : '' }}"
+							onclick="updateTodoPrompt('{{ $todo->title }}') || event.stopImmediatePropagation()"
+							wire:click="updateTodo({{ $todo->id }}, todoUpdated)"
+							>{{ $todo->title }}</a>
 					</div>
 					<div>
-						<form action="#" method="POST">
-							@csrf
-							<button class="btn btn-sm btn-danger">&times;</button>
-						</form>
+						<button 
+							class="btn btn-sm btn-danger" 
+							onclick="confirm('Are you sure?') || event.stopImmediatePropagation()"
+							wire:click="deleteTodo({{ $todo->id }})">
+						&times;</button>
 					</div>
 				</li>
 			@endforeach
 		</ul>
 	</div>
+	<script>
+		let todoUpdated = '';
+
+		function updateTodoPrompt(title) {
+			event.preventDefault();
+			todoUpdated = '';
+			const todo = prompt("Update Todo", title);
+
+			if(todo == null || todo.trim() == '') {
+				console.log('cancel or empty');
+				todoUpdated = '';
+				return false;
+			}
+
+			todoUpdated = todo;
+			return true;
+		}
+	</script>
 </div>

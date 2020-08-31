@@ -31,4 +31,35 @@ class Todos extends Component
 
     	$this->title = '';
     }
+
+    public function deleteTodo($id)
+    {
+    	Todo::find($id)->delete();
+    }
+
+    public function toggleTodo($id)
+    {
+    	$todo = Todo::findOrFail($id);
+
+    	$todo->completed = !$todo->completed;
+    	$todo->save();
+    }
+
+    public function updateTodo($id, $title)
+    {
+    	$todo = Todo::findOrFail($id);
+    	$todo->title = $title;
+    	$todo->save();
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
