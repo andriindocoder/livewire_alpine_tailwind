@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <livewire:counter>
+                    <livewire:todos>
                 </div>
             </div>
         </div>
