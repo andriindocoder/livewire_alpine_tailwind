@@ -2,7 +2,7 @@
 	<div>
 
 		<div class="mb-4">
-			<input type="text" name="addTodo" class="form-control form-control-lg" id="addTodo" placeholder="What needs to be done?" wire:model="title" wire:keydown.enter="addTodo">
+			<input type="text" name="addTodo" class="form-control form-control-lg" id="addTodo" placeholder="Today's Task" wire:model="title" wire:keydown.enter="addTodo">
 			{{-- <button wire:click="addTodo" class="btn btn-primary" type="submit">Add</button> --}}
 			@error('title')
 			   <div style="color: red;">{{ $message }}</div>
